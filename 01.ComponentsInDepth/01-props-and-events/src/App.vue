@@ -1,12 +1,16 @@
 <template>
-  <VueProjectHeader/>
-  <router-view/>
+  <AppHeader />
+  <router-view />
 </template>
 
 <script>
-import VueProjectHeader from "@/layout/VueProjectHeader";
+import AppHeader from '@/layout/AppHeader';
+
 export default {
-  components: {VueProjectHeader}
+  name: 'App',
+  components: {
+    AppHeader,
+  }
 }
 </script>
 

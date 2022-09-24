@@ -1,23 +1,21 @@
 <template>
-  <div class="wrap">
+  <div class='wrap'>
     <nav>
       <router-link to="/">홈</router-link>
       |
-      <router-link to="/animal">유기동물 조회</router-link>
-      |
-      <router-link to="/about">개발자</router-link>
+      <router-link to="/todo">할일</router-link>
     </nav>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'VueProjectHeader',
+  name: 'AppHeader',
   components: {},
   data() {
     return {
-      block: ''
-    }
+      block: '',
+    };
   },
   setup() {
   },
@@ -30,7 +28,7 @@ export default {
   methods() {
 
   },
-}
+};
 </script>
 
 <style scoped>

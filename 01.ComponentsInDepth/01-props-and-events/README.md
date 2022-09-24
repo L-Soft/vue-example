@@ -1,4 +1,4 @@
-# vue-project
+# 01-props-and-events
 
 ## Project setup
 ```

@@ -4,12 +4,12 @@
 
 <script>
 export default {
-  name: 'TestView',
+  name: 'HomeScreen',
   components: {},
   data() {
     return {
-      block: ''
-    }
+      block: '',
+    };
   },
   setup() {
   },
@@ -22,11 +22,11 @@ export default {
   methods() {
 
   },
-}
+};
 </script>
 
 <style scoped>
-.block {
-    
+.wrap {
+
 }
 </style>
