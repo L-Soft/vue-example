@@ -13,6 +13,9 @@ import TodoList from '@/components/todo/TodoList';
 export default {
   name: 'TodoScreen',
   components: {TodoInsert, TodoList},
+  emits: [
+    'updateStatus',
+  ],
   data() {
     return {
       todos: (() => {
@@ -34,6 +37,9 @@ export default {
     this.data = null;
   },
   methods: {
+    todoSize () {
+      this.$emit('updateStatus', {todoSize: this.todos.length});
+    },
     isChecked ({id, checked}) {
       console.log("isChecked/TodoScreen", id, checked);
       this.todos = this.todos.map(todo =>
@@ -41,6 +47,7 @@ export default {
     },
     todoRemove ({id}) {
       this.todos = this.todos.filter(todo => todo.id !== id);
+      this.todoSize();
     },
     onSubmit ({text}) {
       const maxId = this.todos.reduce((acc, current) => {
@@ -52,6 +59,8 @@ export default {
         text,
         checked: false,
       });
+
+      this.todoSize();
     }
   },
 };

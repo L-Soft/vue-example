@@ -1,15 +1,24 @@
 <template>
   <AppHeader />
-  <router-view />
+  <router-view @update-status="updateStatus"/>
 </template>
 
 <script>
 import AppHeader from '@/layout/AppHeader';
 
+const updateStatus = ({todoSize}) => {
+  console.log("updateStatus", todoSize);
+};
+
 export default {
   name: 'App',
   components: {
     AppHeader,
+  },
+  setup() {
+    return {
+      updateStatus,
+    }
   }
 }
 </script>
