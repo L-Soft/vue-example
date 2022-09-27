@@ -1,23 +1,37 @@
 <template>
-  <AppHeader />
-  <router-view @update-status="updateStatus"/>
+  <AppHeader :todoInfo="todoInfo" />
+  <router-view @set-todo-info="setTodoInfo"/>
+  <AppFooter />
 </template>
 
 <script>
 import AppHeader from '@/layout/AppHeader';
+import { reactive } from 'vue';
+import AppFooter from '@/layout/AppFooter';
 
-const updateStatus = ({todoSize}) => {
-  console.log("updateStatus", todoSize);
+const useTodos = () => {
+  const todoInfo = reactive({todoSize: 0, done: 0, undone: 0});
+  const setTodoInfo = ({todoSize, done, undone}) => {
+    todoInfo.todoSize = todoSize;
+    todoInfo.done = done;
+    todoInfo.undone = undone;
+  };
+
+  return {
+    todoInfo,
+    setTodoInfo,
+  }
 };
 
 export default {
   name: 'App',
   components: {
     AppHeader,
+    AppFooter,
   },
   setup() {
     return {
-      updateStatus,
+      ...useTodos(),
     }
   }
 }

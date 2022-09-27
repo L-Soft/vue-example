@@ -14,7 +14,7 @@ export default {
   name: 'TodoScreen',
   components: {TodoInsert, TodoList},
   emits: [
-    'updateStatus',
+    'setTodoInfo',
   ],
   data() {
     return {
@@ -38,7 +38,11 @@ export default {
   },
   methods: {
     todoSize () {
-      this.$emit('updateStatus', {todoSize: this.todos.length});
+      this.$emit('setTodoInfo', {
+        todoSize: this.todos.length,
+        done: this.todos.filter(todo => todo.checked).length,
+        undone: this.todos.filter(todo => !todo.checked).length,
+      });
     },
     isChecked ({id, checked}) {
       console.log("isChecked/TodoScreen", id, checked);

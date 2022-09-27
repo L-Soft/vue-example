@@ -3,8 +3,11 @@
     <nav>
       <router-link to="/">홈</router-link>
       |
-      <router-link to="/todo">할일</router-link>
+      <router-link to="/todo">일정관리</router-link>
     </nav>
+  </div>
+  <div class='todo-info'>
+    <p>{{todoInfoDisplay}}</p>
   </div>
 </template>
 
@@ -12,9 +15,16 @@
 export default {
   name: 'AppHeader',
   components: {},
+  props: {
+    todoInfo: {
+      todoSize: Number,
+      done: Number,
+      undone: Number,
+    },
+  },
   data() {
     return {
-      block: '',
+      currentTodoInfo: this.todoInfo,
     };
   },
   setup() {
@@ -25,9 +35,17 @@ export default {
   },
   unmounted() {
   },
-  methods() {
-
+  methods:{
   },
+  computed: {
+    todoInfoDisplay () {
+      return [
+        `전체: ${this.currentTodoInfo.todoSize}`,
+        `완료: ${this.currentTodoInfo.done}`,
+        `미완료: ${this.currentTodoInfo.undone}`
+      ].join(", ");
+    }
+  }
 };
 </script>
 
@@ -39,6 +57,16 @@ export default {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 5px 1px #232F34;
+}
+
+.todo-info {
+  width: 100%;
+  height: 3rem;
+  background-color: #F9AA33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 nav {
