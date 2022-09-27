@@ -30,6 +30,7 @@ export default {
   setup() {
   },
   created() {
+    this.todoInfo();
   },
   mounted() {
   },
@@ -37,7 +38,7 @@ export default {
     this.data = null;
   },
   methods: {
-    todoSize () {
+    todoInfo () {
       this.$emit('setTodoInfo', {
         todoSize: this.todos.length,
         done: this.todos.filter(todo => todo.checked).length,
@@ -51,7 +52,7 @@ export default {
     },
     todoRemove ({id}) {
       this.todos = this.todos.filter(todo => todo.id !== id);
-      this.todoSize();
+      this.todoInfo();
     },
     onSubmit ({text}) {
       const maxId = this.todos.reduce((acc, current) => {
@@ -64,7 +65,7 @@ export default {
         checked: false,
       });
 
-      this.todoSize();
+      this.todoInfo();
     }
   },
 };
