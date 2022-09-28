@@ -6,8 +6,8 @@
       <router-link to="/todo">일정관리</router-link>
     </nav>
   </div>
-  <div class='todo-info'>
-    <p>{{todoInfoDisplay}}</p>
+  <div :class='todoInfoClass'>
+    <p>{{ todoInfoMessage }}</p>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   components: {},
   props: {
     todoInfo: {
-      todoSize: Number,
+      totalTodo: Number,
       done: Number,
       undone: Number,
     },
@@ -25,6 +25,8 @@ export default {
   data() {
     return {
       currentTodoInfo: this.todoInfo,
+      todoInfoClass: ['todo-info-hidden'],
+      todoInfoFlag: 0,
     };
   },
   setup() {
@@ -36,11 +38,26 @@ export default {
   unmounted() {
   },
   methods:{
+    show() {
+      console.log("show");
+      if (this.todoInfoFlag === 0) {
+        this.todoInfoFlag = 1;
+        return;
+      }
+
+      this.todoInfoClass = ['todo-info'];
+      setTimeout(() => {
+        this.todoInfoClass = ['todo-info-hidden'];
+      }, 1500);
+    }
   },
   computed: {
-    todoInfoDisplay () {
+    todoInfoMessage () {
+      console.log("todoInfoMessage");
+
+      this.show();
       return [
-        `전체: ${this.currentTodoInfo.todoSize}`,
+        `전체: ${this.currentTodoInfo.totalTodo}`,
         `완료: ${this.currentTodoInfo.done}`,
         `미완료: ${this.currentTodoInfo.undone}`
       ].join(", ");
@@ -67,6 +84,11 @@ export default {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+}
+
+.todo-info-hidden {
+  overflow: hidden;
+  height: 0;
 }
 
 nav {

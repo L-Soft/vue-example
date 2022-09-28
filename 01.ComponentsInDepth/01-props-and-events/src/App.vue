@@ -10,9 +10,9 @@ import { reactive } from 'vue';
 import AppFooter from '@/layout/AppFooter';
 
 const useTodos = () => {
-  const todoInfo = reactive({todoSize: 0, done: 0, undone: 0});
-  const setTodoInfo = ({todoSize, done, undone}) => {
-    todoInfo.todoSize = todoSize;
+  const todoInfo = reactive({totalTodo: 0, done: 0, undone: 0});
+  const setTodoInfo = ({totalTodo, done, undone}) => {
+    todoInfo.totalTodo = totalTodo;
     todoInfo.done = done;
     todoInfo.undone = undone;
   };

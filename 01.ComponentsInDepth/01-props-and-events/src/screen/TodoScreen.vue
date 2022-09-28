@@ -40,7 +40,7 @@ export default {
   methods: {
     todoInfo () {
       this.$emit('setTodoInfo', {
-        todoSize: this.todos.length,
+        totalTodo: this.todos.length,
         done: this.todos.filter(todo => todo.checked).length,
         undone: this.todos.filter(todo => !todo.checked).length,
       });
