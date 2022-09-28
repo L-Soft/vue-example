@@ -38,8 +38,7 @@ export default {
   unmounted() {
   },
   methods:{
-    show() {
-      console.log("show");
+    todoChangeInfoShow() {
       if (this.todoInfoFlag === 0) {
         this.todoInfoFlag = 1;
         return;
@@ -53,9 +52,7 @@ export default {
   },
   computed: {
     todoInfoMessage () {
-      console.log("todoInfoMessage");
-
-      this.show();
+      this.todoChangeInfoShow();
       return [
         `전체: ${this.currentTodoInfo.totalTodo}`,
         `완료: ${this.currentTodoInfo.done}`,
